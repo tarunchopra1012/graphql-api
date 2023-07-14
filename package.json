@@ -1,0 +1,17 @@
+{
+  "name": "graphql-api",
+  "version": "1.0.0",
+  "description": "This project is a demonstration of a backend application built using Node.js, GraphQL, and MongoDB. It provides a starting point for building applications with these technologies.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-graphql": "^0.12.0",
+    "graphql": "^16.7.1"
+  }
+}
