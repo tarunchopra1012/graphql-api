@@ -5,7 +5,7 @@ const { GraphQLObjectType, GraphQLID, GraphQLString, GraphQLList, GraphQLSchema 
 
 const app = express();
 
-const usersList = [
+let usersList = [
     { id: "1", name: "James", email: "james@test.com" },
     { id: "2", name: "John", email: "john@test.com" },
     { id: "3", name: "Jimmie", email: "jimmie@test.com" }
@@ -72,7 +72,19 @@ const mutations = new GraphQLObjectType({
                 user.name = name;
                 return user;
             }
-        }
+        },
+        // delete user
+        deleteUser: {
+            type: UserType,
+            args: { 
+                id: { type: GraphQLID }
+            },
+            resolve(parent, { id }) {
+                const user = usersList.find((u) => u.id === id);
+                usersList = usersList.filter((u) => u.id !== id);
+                return user;
+            }
+        },
     }
 });
 
