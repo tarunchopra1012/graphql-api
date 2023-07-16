@@ -57,6 +57,21 @@ const mutations = new GraphQLObjectType({
                 usersList.push(newUser);
                 return newUser;
             },
+        },
+        // update a user
+        updateUser: {
+            type: UserType,
+            args: { 
+                id: { type: GraphQLID }, 
+                email: { type: GraphQLString }, 
+                name: { type: GraphQLString } 
+            },
+            resolve(parent, { id, name, email }) {
+                const user = usersList.find((u) => u.id === id);
+                user.email = email;
+                user.name = name;
+                return user;
+            }
         }
     }
 });
