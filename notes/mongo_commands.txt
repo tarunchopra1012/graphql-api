@@ -12,3 +12,18 @@
 > db.products.update( { _id: ObjectId("64b539ad4a7aa43f6ca3bcc1") }, { $set: { reviews: [ { text: 'Good Product', stars: 4 }, { text: 'Average Product', stars: 2 }] } })
 > db.products.find({ name: { $eq: 'Keyboard' } });
 > db.products.find({ $and: [{price: {$eq: 10}}, { name: { $eq: 'Pen' } }] }); -> To combine 2 conditions
+
+> for(let i=1; i<5000; i++) {
+...  db.products.insertOne({ name: 'product'+i, price: i })
+... }
+
+> db.products.find({ name: 'product2000' }).explain('executionStats');
+
+-> executionTimeMillis: 6,
+    totalKeysExamined: 0,
+    totalDocsExamined: 5003,
+
+> To optimize the query we need to add the index on the name field.
+> db.products.createIndex({ name: 1 }); // name_1
+> db.products.getIndexes();
+> db.products.dropIndex('name_1');    
