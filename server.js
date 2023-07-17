@@ -1,6 +1,6 @@
 const express = require('express');
 const { connectDB } = require('./config/db');
-const { getUsers } = require('./controllers/usersController');
+const routes = require('./config/routes');
 
 const app = express();
 const port = 5000;
@@ -8,8 +8,8 @@ const port = 5000;
 // Connect to the database
 connectDB();
 
-// Routes
-app.get('/', getUsers);
+// Use routes
+app.use('/', routes);
 
 // Start the server
 app.listen(port, () => {

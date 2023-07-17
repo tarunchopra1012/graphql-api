@@ -1,0 +1,14 @@
+> db.createCollection('products')
+> db.products.find()
+> db.products.insertOne({ name: 'Keyboard', price: 250 })
+> db.products.find().pretty()
+> db.products.find({ price: 250 })
+> db.products.findOne({ price: 350 })
+> db.products.insertMany([ { name: 'Mouse', price: 20 }, { name: 'Monitor', price: 300 } ])
+> db.products.update({ _id: ObjectId("64b534214a7aa43f6ca3bcbf") }, { $set: { name: 'TV' } })
+-> DeprecationWarning: Collection.update() is deprecated. Use updateOne, updateMany, or bulkWrite.
+> db.products.deleteOne({ _id: ObjectId("64b534214a7aa43f6ca3bcbe") });
+> db.products.deleteMany({ _id: {$in: [ ObjectId("64b5338a4a7aa43f6ca3bcbd"), ObjectId("64b534214a7aa43f6ca3bcbf") ] } });
+> db.products.update( { _id: ObjectId("64b539ad4a7aa43f6ca3bcc1") }, { $set: { reviews: [ { text: 'Good Product', stars: 4 }, { text: 'Average Product', stars: 2 }] } })
+> db.products.find({ name: { $eq: 'Keyboard' } });
+> db.products.find({ $and: [{price: {$eq: 10}}, { name: { $eq: 'Pen' } }] }); -> To combine 2 conditions
