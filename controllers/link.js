@@ -137,7 +137,7 @@ module.exports = {
         );
 
         let mailOptions = {
-          from: "Where's The Foodtruck <" + process.env.MAIL_USER + ">",
+          from: "Test Event <" + process.env.MAIL_USER + ">",
           to: user.email,
           subject: mail_subject,
           html: "",
@@ -186,7 +186,7 @@ module.exports = {
 
     const msg = {
       to: emails,
-      from: "Where's The Foodtruck <" + process.env.MAIL_USER + ">",
+      from: "Test Event <" + process.env.MAIL_USER + ">",
       subject: "Hello world",
       text: "Hello plain world!",
       html: "<p>Hello HTML world!</p>",
