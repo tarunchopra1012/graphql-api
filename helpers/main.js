@@ -22,7 +22,7 @@ const Main = {
   sendParticipantEmail(participants) {
     console.log(participants);
     let emails = Object.keys(participants);
-    let fetch_template_sql = `SELECT subject, body FROM mailTemplates_data WHERE code = 'catering_events'`;
+    let fetch_template_sql = `SELECT subject, body FROM mailTemplates_data WHERE code = 'cat_events'`;
 
     mysql.query(fetch_template_sql, function (err2, temp_res, fields2) {
       var email_html = temp_res[0].body;
@@ -104,7 +104,6 @@ const Main = {
   },
 
   getUniqueVendorsByLocation(vendors_arr) {
-    // console.log('1111111', vendors_arr);
     var vendors_bag = [];
 
     vendors_arr.map((vendor, index) => {
@@ -197,7 +196,7 @@ const Main = {
         emailPromiseArray.push(
           Main.sendMail({
             from:
-              "Where's The Foodtruck <" + process.env.MAIL_USER + ">",
+              "Test App <" + process.env.MAIL_USER + ">",
             to: vendor.email,
             subject: email_subject,
             html: string3,
