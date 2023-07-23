@@ -74,6 +74,9 @@ module.exports = function (app) {
 
   /*-------------------END---------------*/
 
+  app.get("/location_eve_market", islogined_superAdmin, islogined_Admin, require("../controllers/home").location_eve_market
+  );
+
   /*-------------------IS ADMIN LOGIN---------------*/
 
   function islogined_Admin(req, res, next) {
